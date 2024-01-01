@@ -1,0 +1,667 @@
+ACos(Number) =>
+ASin(Number) =>
+ATan2(x, y) =>
+ATan(Number) =>
+Abs(Number) =>
+Array([Value, Value2, ..., ValueN]) =>
+BlockInput(MouseMove) =>
+BlockInput(OnOff) =>
+BlockInput(SendMouse) =>
+Buffer([ByteCount, FillByte]) =>
+CallbackCreate(Function, [Options, ParamCount]) =>
+CallbackFree(Address) =>
+CaretGetPos([&OutputVarX, &OutputVarY]) =>
+Ceil(Number) =>
+Chr(Number) =>
+Class([BaseClass, Args*]) =>
+Class([Name, BaseClass, Args*]) =>
+Click([Options]) =>
+ClipWait([Timeout, WaitForAnyData]) =>
+ClipboardAll([Data, Size]) =>
+ComCall(Index, ComObj, [Type1, Arg1, Type2, Arg2, ReturnType]) =>
+ComObjActive(CLSID) =>
+ComObjArray(VarType, Count1, [Count2, ..., Count8]) =>
+ComObjConnect(ComObj, [PrefixOrSink]) =>
+ComObjFlags(ComObj, [NewFlags, Mask]) =>
+ComObjFromPtr(DispPtr) =>
+ComObjGet(Name) =>
+ComObjQuery(ComObj, [SID], IID) =>
+ComObjType(ComObj) =>
+ComObjType(ComObj, "CLSID") =>
+ComObjType(ComObj, "Class") =>
+ComObjType(ComObj, "IID") =>
+ComObjType(ComObj, "Name") =>
+ComObjValue(ComObj) =>
+ComObject(CLSID, [IID]) =>
+ComValue(VarType, Value, [Flags]) =>
+ControlAddItem(String, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlChooseIndex(N, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlChooseString(String, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlClick([Control-or-Pos, WinTitle, WinText, WhichButton, ClickCount, Options, ExcludeTitle, ExcludeText]) =>
+ControlDeleteItem(N, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlFindItem(String, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlFocus(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetChecked(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetChoice(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetClassNN(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetEnabled(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetExStyle(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetFocus([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetHwnd(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetIndex(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetItems(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetPos([&X, &Y, &Width, &Height, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetStyle(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetText(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlGetVisible(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlHide(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlHideDropDown(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlMove([X, Y, Width, Height, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSend(Keys, [Control, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSendText(Text, [Control, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSetChecked(Value, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSetEnabled(Value, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSetExStyle(Value, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSetStyle(Value, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlSetText(NewText, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlShow(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ControlShowDropDown(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+CoordMode(TargetType, [RelativeTo]) =>
+Cos(Number) =>
+Critical([OnOffNumeric]) =>
+DateAdd(DateTime, Time, TimeUnits) =>
+DateDiff(DateTime1, DateTime2, TimeUnits) =>
+DetectHiddenText(Mode) =>
+DetectHiddenWindows(Mode) =>
+DirCopy(Source, Dest, [Overwrite]) =>
+DirCreate(DirName) =>
+DirDelete(DirName, [Recurse]) =>
+DirExist(FilePattern) =>
+DirMove(Source, Dest, [Flag]) =>
+DirSelect([StartingFolder, Options, Prompt]) =>
+DllCall("[DllFile\]Function", [Type1, Arg1, Type2, Arg2, "Cdecl ReturnType"]) =>
+Download(URL, Filename) =>
+DriveEject([Drive]) =>
+DriveGetCapacity(Path) =>
+DriveGetFileSystem(Drive) =>
+DriveGetLabel(Drive) =>
+DriveGetList([Type]) =>
+DriveGetSerial(Drive) =>
+DriveGetSpaceFree(Path) =>
+DriveGetStatus(Path) =>
+DriveGetStatusCD([Drive]) =>
+DriveGetType(Path) =>
+DriveLock(Drive) =>
+DriveRetract([Drive]) =>
+DriveSetLabel(Drive, [NewLabel]) =>
+DriveUnlock(Drive) =>
+Edit([Filename]) =>
+EditGetCurrentCol(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+EditGetCurrentLine(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+EditGetLine(N, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+EditGetLineCount(Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+EditGetSelectedText([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+EditPaste(String, Control, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+EnvGet(EnvVarName) =>
+EnvSet(EnvVar, [Value]) =>
+Error(Message, [What, Extra]) =>
+Exit([ExitCode]) =>
+ExitApp([ExitCode]) =>
+Exp(N) =>
+FileAppend(Text, [Filename, Options]) =>
+FileCopy(SourcePattern, DestPattern, [Overwrite]) =>
+FileCreateShortcut(Target, LinkFile, [WorkingDir, Args, Description, IconFile, ShortcutKey, IconNumber, RunState]) =>
+FileDelete(FilePattern) =>
+FileEncoding(Encoding) =>
+FileExist(FilePattern) =>
+FileGetAttrib([Filename]) =>
+FileGetShortcut(LinkFile, [&OutTarget, &OutDir, &OutArgs, &OutDescription, &OutIcon, &OutIconNum, &OutRunState]) =>
+FileGetSize([Filename, Units]) =>
+FileGetTime([Filename, WhichTime]) =>
+FileGetVersion([Filename]) =>
+FileInstall(Source, Dest, [Overwrite]) =>
+FileMove(SourcePattern, DestPattern, [Overwrite]) =>
+FileOpen(Filename, Flags, [Encoding]) =>
+FileRead(Filename, [Options]) =>
+FileRecycle(FilePattern) =>
+FileRecycleEmpty([DriveLetter]) =>
+FileSelect([Options, RootDir\Filename, Title, Filter]) =>
+FileSetAttrib(Attributes, [FilePattern, Mode]) =>
+FileSetTime([YYYYMMDDHH24MISS, FilePattern, Mode]) =>
+Float(Value) =>
+Floor(Number) =>
+Format(FormatStr, [Values...]) =>
+FormatTime([YYYYMMDDHH24MISS, Format]) =>
+GetKeyName(KeyName) =>
+GetKeySC(KeyName) =>
+GetKeyState(KeyName, [Mode]) =>
+GetKeyVK(KeyName) =>
+GetMethod(Value, [Name, ParamCount]) =>
+GroupActivate(GroupName, [Mode]) =>
+GroupAdd(GroupName, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+GroupClose(GroupName, [Mode]) =>
+GroupDeactivate(GroupName, [Mode]) =>
+Gui([Options, Title, EventObj]) =>
+GuiCtrlFromHwnd(Hwnd) =>
+GuiFromHwnd(Hwnd, [RecurseParent]) =>
+HasBase(Value, BaseObj) =>
+HasMethod(Value, [Name, ParamCount]) =>
+HasProp(Value, Name) =>
+HotIf([Expression]) =>
+HotIf([Function]) =>
+HotIfWinActive([WinTitle, WinText]) =>
+HotIfWinExist([WinTitle, WinText]) =>
+HotIfWinNotActive([WinTitle, WinText]) =>
+HotIfWinNotExist([WinTitle, WinText]) =>
+Hotkey(KeyName, [Action, Options]) =>
+Hotstring(EndChars, [NewValue]) =>
+Hotstring(MouseReset, [NewValue]) =>
+Hotstring(NewOptions) =>
+Hotstring(Reset) =>
+Hotstring(String, [Replacement, OnOffToggle]) =>
+IL_Add(ImageListID, [Filename, IconNumber, ResizeNonIcon]) =>
+IL_Create([InitialCount, GrowCount, LargeIcons]) =>
+IL_Destroy(ImageListID) =>
+ImageSearch(&OutputVarX, &OutputVarY, X1, Y1, X2, Y2, ImageFile) =>
+InStr(Haystack, Needle, [CaseSense, StartingPos, Occurrence]) =>
+IniDelete(Filename, Section, [Key]) =>
+IniRead(Filename) =>
+IniRead(Filename, Section) =>
+IniRead(Filename, Section, Key, [Default]) =>
+IniWrite(Value, Filename, Section) =>
+IniWrite(Value, Filename, Section, Key) =>
+InputBox([Prompt, Title, Options, Default]) =>
+InputHook([Options, EndKeys, MatchList]) =>
+InstallKeybdHook([Install, Force]) =>
+InstallMouseHook([Install, Force]) =>
+Integer(Value) =>
+IsAlnum(Value) =>
+IsAlpha(Value, [Locale]) =>
+IsDigit(Value) =>
+IsFloat(Value) =>
+IsInteger(Value) =>
+IsLabel(Value) =>
+IsLower(Value, [Locale]) =>
+IsNumber(Value) =>
+IsObject(Value) =>
+IsSet(Value) =>
+IsSetRef(Value) =>
+IsSpace(Value) =>
+IsTime(Value) =>
+IsUpper(Value, [Locale]) =>
+IsXDigit(Value) =>
+KeyHistory([MaxEvents]) =>
+KeyWait(KeyName, [Options]) =>
+LTrim(String, [OmitChars]) =>
+ListHotkeys() =>
+ListLines([Mode]) =>
+ListVars() =>
+ListViewGetContent([Options, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+Ln(Number) =>
+LoadPicture(Filename, [Options, &ImageType]) =>
+Log(Number) =>
+Map(Key1, Value1, Key2, Value2, ...) =>
+Max(Number1, [Number2, ...]) =>
+MenuFromHandle(Handle) =>
+MenuSelect(WinTitle, WinText, Menu, [SubMenu1, SubMenu2, SubMenu3, SubMenu4, SubMenu5, SubMenu6, ExcludeTitle, ExcludeText]) =>
+Min(Number1, [Number2]) =>
+Mod(Dividend, Divisor) =>
+MonitorGet([N, &Left, &Top, &Right, &Bottom]) =>
+MonitorGetCount() =>
+MonitorGetName([N]) =>
+MonitorGetPrimary() =>
+MonitorGetWorkArea([N, &Left, &Top, &Right, &Bottom]) =>
+MouseClick([WhichButton, X, Y, ClickCount, Speed, DownOrUp, Relative]) =>
+MouseClickDrag(WhichButton, X1, Y1, X2, Y2, [Speed, Relative]) =>
+MouseGetPos(&OutputVarX, &OutputVarY, &OutputVarWin, &OutputVarControl, [Flag]) =>
+MouseMove(X, Y, [Speed, Relative]) =>
+MsgBox([Text, Title, Options]) =>
+NumGet(Source, [Offset], Type) =>
+NumPut(Type, Number, [Type2, Number2, ...], Target, [Offset]) =>
+Number(Value) =>
+ObjAddRef(Ptr) =>
+ObjBindMethod(Obj, [Method, Params]) =>
+ObjFromPtr(Address) =>
+ObjFromPtrAddRef(Address) =>
+ObjGetBase(Value) =>
+ObjGetCapacity(Obj) =>
+ObjGetDataPtr(Obj) =>
+ObjGetDataSize(Obj) =>
+ObjHasOwnProp(Obj, Name) =>
+ObjOwnPropCount(Obj) =>
+ObjOwnProps(Obj) =>
+ObjPtr(myObject) =>
+ObjPtrAddRef(myObject) =>
+ObjRelease(Ptr) =>
+ObjSetBase(Obj, BaseObj) =>
+ObjSetCapacity(Obj, MaxProps) =>
+ObjSetDataPtr(Obj, Ptr) =>
+OnClipboardChange(Function, [AddRemove]) =>
+OnError(Function, [AddRemove]) =>
+OnExit(Function, [AddRemove]) =>
+OnMessage(MsgNumber, Function, [MaxThreads]) =>
+Ord(String) =>
+OutputDebug(Text) =>
+Pause([NewState]) =>
+Persistent([Persist]) =>
+PixelGetColor(X, Y, [Mode]) =>
+PixelSearch(&OutputVarX, &OutputVarY, X1, Y1, X2, Y2, ColorID, [Variation]) =>
+PostMessage(Msg, [wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+ProcessClose(PIDOrName) =>
+ProcessExist([PIDOrName]) =>
+ProcessGetName([PIDOrName]) =>
+ProcessGetParent([PIDOrName]) =>
+ProcessGetPath([PIDOrName]) =>
+ProcessSetPriority(Level, [PIDOrName]) =>
+ProcessWait(PIDOrName, [Timeout]) =>
+ProcessWaitClose(PIDOrName, [Timeout]) =>
+RTrim(String, [OmitChars]) =>
+Random([A, B]) =>
+RegCreateKey([KeyName]) =>
+RegDelete([KeyName, ValueName]) =>
+RegDeleteKey([KeyName]) =>
+RegExMatch(Haystack, NeedleRegEx, [&OutputVar, StartingPos]) =>
+RegExReplace(Haystack, NeedleRegEx, [Replacement, &OutputVarCount, Limit, StartingPos]) =>
+RegRead([KeyName, ValueName, Default]) =>
+RegWrite(Value, ValueType, KeyName, [ValueName]) =>
+RegWrite(Value, [ValueType, , ValueName]) =>
+Reload() =>
+Round(Number, [N]) =>
+Run(Target, [WorkingDir, Options, &OutputVarPID]) =>
+RunAs([User, Password, Domain]) =>
+RunWait(Target, [WorkingDir, Options, &OutputVarPID]) =>
+Send(Keys) =>
+SendEvent(Keys) =>
+SendInput(Keys) =>
+SendLevel(Level) =>
+SendMessage(Msg, [wParam, lParam, Control, WinTitle, WinText, ExcludeTitle, ExcludeText, Timeout]) =>
+SendMode(Mode) =>
+SendPlay(Keys) =>
+SendText(Keys) =>
+SetCapsLockState([State]) =>
+SetControlDelay(Delay) =>
+SetDefaultMouseSpeed(Speed) =>
+SetKeyDelay([Delay, PressDuration, 'Play']) =>
+SetMouseDelay(Delay, ['Play']) =>
+SetNumLockState([State]) =>
+SetRegView(RegView) =>
+SetScrollLockState([State]) =>
+SetStoreCapsLockMode(Mode) =>
+SetTimer([Function, Period, Priority]) =>
+SetTitleMatchMode(MatchMode) =>
+SetTitleMatchMode(Speed) =>
+SetWinDelay(Delay) =>
+SetWorkingDir(DirName) =>
+Shutdown(Flag) =>
+Sin(Number) =>
+Sleep(Delay) =>
+Sort(String, [Options, Function]) =>
+SoundBeep([Frequency, Duration]) =>
+SoundGetInterface(IID, [Component, Device]) =>
+SoundGetMute([Component, Device]) =>
+SoundGetName([Component, Device]) =>
+SoundGetVolume([Component, Device]) =>
+SoundPlay(Filename, [Wait]) =>
+SoundSetMute(NewSetting, [Component, Device]) =>
+SoundSetVolume(NewSetting, [Component, Device]) =>
+SplitPath(Path, [&OutFileName, &OutDir, &OutExtension, &OutNameNoExt, &OutDrive]) =>
+Sqrt(Number) =>
+StatusBarGetText([Part#, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+StatusBarWait([BarText, Timeout, Part#, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+StrCompare(String1, String2, [CaseSense]) =>
+StrGet(Source, [Encoding]) =>
+StrGet(Source, [Length, Encoding]) =>
+StrLen(String) =>
+StrLower(String) =>
+StrPtr(Value) =>
+StrPut(String, Target, [Encoding]) =>
+StrPut(String, Target, [Length, Encoding]) =>
+StrPut(String, [Encoding]) =>
+StrReplace(Haystack, Needle, [ReplaceText, CaseSense, &OutputVarCount, Limit]) =>
+StrSplit(String, [Delimiters, OmitChars, MaxParts]) =>
+StrTitle(String) =>
+StrUpper(String) =>
+String(Value) =>
+SubStr(String, StartingPos, [Length]) =>
+Suspend([Mode]) =>
+SysGet(Property) =>
+SysGetIPAddresses() =>
+Tan(Number) =>
+Thread(SubFunction, [Value1, Value2]) =>
+ToolTip([Text, X, Y, WhichToolTip]) =>
+TraySetIcon([FileName, IconNumber, Freeze]) =>
+TrayTip([Text, Title, Options]) =>
+Trim(String, [OmitChars]) =>
+Type(Value) =>
+VarSetStrCapacity(&TargetVar, [RequestedCapacity]) =>
+VerCompare(VersionA, VersionB) =>
+WinActivate([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinActivateBottom([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinActive([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinClose([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinExist([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetAlwaysOnTop(WinTitle, WinText, ExcludeTitle, ExcludeText) =>
+WinGetClass([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetClientPos([&X, &Y, &Width, &Height, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetControls([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetControlsHwnd([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetCount([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetEnabled(WinTitle, WinText, ExcludeTitle, ExcludeText) =>
+WinGetExStyle([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetID([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetIDLast([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetList([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetMinMax([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetPID([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetPos([&OutX, &OutY, &OutWidth, &OutHeight, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetProcessName([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetProcessPath([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetStyle([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetText([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetTitle([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetTransColor([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinGetTransparent([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinHide([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinKill([WinTitle, WinText, SecondsToWait, ExcludeTitle, ExcludeText]) =>
+WinMaximize([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinMinimize([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinMinimizeAll() =>
+WinMinimizeAllUndo() =>
+WinMove([X, Y, Width, Height, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinMoveBottom([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinMoveTop([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinRedraw([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinRestore([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetAlwaysOnTop([Value, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetEnabled(Value, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetExStyle(Value, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetRegion([Options, WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetStyle(Value, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetTitle(NewTitle, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetTransColor(Color, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinSetTransparent(N, [WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinShow([WinTitle, WinText, ExcludeTitle, ExcludeText]) =>
+WinWait([WinTitle, WinText, Timeout, ExcludeTitle, ExcludeText]) =>
+WinWaitActive([WinTitle, WinText, Timeout, ExcludeTitle, ExcludeText]) =>
+WinWaitClose([WinTitle, WinText, Timeout, ExcludeTitle, ExcludeText]) =>
+WinWaitNotActive([WinTitle, WinText, Timeout, ExcludeTitle, ExcludeText]) =>
+
+
+class Any {
+
+	GetMethod(Name) =>
+	HasBase(BaseObj) =>
+	HasMethod(Name) =>
+	HasProp(Name) =>
+	__Init() =>
+}
+
+class Array extends Object {
+	__New(Values*) =>
+	__Enum(NumberOfVars?) =>
+	__Item[Index] =>
+	Clone() =>
+	Default =>
+	Delete(Index) =>
+	Get(Index [, Default]) =>
+	Has(Index) =>
+	InsertAt(Index, Values*) =>
+	Pop() =>
+	Push(Values*) =>
+	RemoveAt(Index, Length := 1) =>
+}
+
+
+class Buffer extends Object {
+	__New([ByteCount, FillByte])
+}
+
+class Class extends Object {
+	static Call([Name,] BaseClass?, Args*) =>
+}
+
+class ClipboardAll extends Buffer {
+	__New([Data, Size]) =>
+}
+
+class ComObjArray extends ComValue {
+	static Call(VarType, Counts*) =>
+	__Enum(NumberOfVars?) =>
+	MaxIndex(n) =>
+	MinIndex(n) =>
+	Clone() =>
+}
+
+class ComObject extends ComValue {
+	static Call(CLSID, IID := '{00020400-0000-0000-C000-000000000046}') =>
+}
+
+class ComValue extends Any {
+	static Call(VarType, Value [, Flags]) =>
+}
+
+class Enumerator extends Func {
+	Call(&OutputVar1?, &OutputVar2?, *) =>
+}
+
+class Error extends Object {
+	__New([Message, What, Extra]) =>
+}
+
+class File extends Object {
+	Read([Characters]) =>
+	Write(String) =>
+	RawRead(Buffer [, Bytes]) =>
+	RawWrite(Data [, Bytes]) =>
+	ReadLine() =>
+	WriteLine([String]) =>
+	ReadChar() =>
+	ReadDouble() =>
+	ReadFloat() =>
+	ReadInt() =>
+	ReadInt64() =>
+	ReadShort() =>
+	ReadUChar() =>
+	ReadUInt() =>
+	ReadUShort() =>
+	WriteChar(Num) =>
+	WriteDouble(Num) =>
+	WriteFloat(Num) =>
+	WriteInt(Num) =>
+	WriteInt64(Num) =>
+	WriteShort(Num) =>
+	WriteUChar(Num) =>
+	WriteUInt(Num) =>
+	WriteUShort(Num) =>
+	Seek(Distance [, Origin]) =>
+	Close() =>
+}
+
+class Float extends Number {
+	static Call(Value) =>
+}
+
+class Func extends Object {
+	Call(Params*) =>
+	Bind(Params*) =>
+	IsByRef(ParameterVar) =>
+	IsOptional([ParamIndex]) =>
+}
+
+class Gui extends Object {
+	__Enum(NumberOfVars?) =>
+	__New([Options, Title := A_ScriptName, EventObj]) =>
+	Add(ControlType [, Options, Text]) =>
+	AddText([Options, Text]) =>
+	AddEdit([Options, Text]) =>
+	AddUpDown([Options, Text]) =>
+	AddPicture([Options, Filename]) =>
+	AddButton([Options, Text]) =>
+	AddCheckbox([Options, Text]) =>
+	AddRadio([Options, Text]) =>
+	AddDropDownList([Options, Items]) =>
+	AddComboBox([Options, Items]) =>
+	AddListBox([Options, Items]) =>
+	AddListView([Options, Titles]) =>
+	AddTreeView([Options, Text]) =>
+	AddLink([Options, Text]) =>
+	AddHotkey([Options, Text]) =>
+	AddDateTime([Options, DateTime]) =>
+	AddMonthCal([Options, YYYYMMDD]) =>
+	AddSlider([Options, Value]) =>
+	AddProgress([Options, Value]) =>
+	AddGroupBox([Options, Text]) =>
+	AddTab([Options, Pages]) =>
+	AddTab2([Options, Pages]) =>
+	AddTab3([Options, Pages]) =>
+	AddStatusBar([Options, Text]) =>
+	AddActiveX([Options, Component]) =>
+	AddCustom([Win32Class, Text]) =>
+	Destroy() =>
+	Flash(false) =>
+	GetClientPos([&X, &Y, &Width, &Height]) =>
+	GetPos([&X, &Y, &Width, &Height]) =>
+	Hide() =>
+	Cancel() =>
+	Maximize() =>
+	Minimize() =>
+	Move([X, Y, Width, Height]) =>
+	OnEvent(EventName, Callback, AddRemove := 1) =>
+	OnMessage(Msg, Callback [, AddRemove]) =>
+	Opt(Options) =>
+	Restore() =>
+	SetFont([Options, FontName]) =>
+	Show([Options]) =>
+	Submit(false) =>
+}
+
+class Control extends Object {
+    Focus() =>
+    GetPos([&X, &Y, &Width, &Height]) =>
+    Move([X, Y, Width, Height]) =>
+    OnCommand(NotifyCode, Callback, AddRemove := 1) =>
+    OnEvent(EventName, Callback, AddRemove := 1) =>
+    OnMessage(Msg, Callback [, AddRemove]) =>
+    OnNotify(NotifyCode, Callback, AddRemove := 1) =>
+    Opt(Options) =>
+    Redraw() =>
+    SetFont([Options, FontName]) =>
+    SetFormat([TimeFormat]) =>
+}
+
+class List extends GuiControl {
+    Add(Items*) =>
+    Choose(Value) =>
+    Delete([Index]) =>
+}
+
+class ListView extends GuiControl {
+    Add([Options, Cols*]) =>
+    Delete([RowNumber]) =>
+    DeleteCol(ColumnNumber) =>
+    GetCount([Mode]) =>
+    GetNext([StartingRowNumber, RowType]) =>
+    GetText(RowNumber [, ColumnNumber]) =>
+    Insert(RowNumber [, Options, Cols*]) =>
+    InsertCol(ColumnNumber [, Options, ColumnTitle]) =>
+    Modify(RowNumber [, Options, NewCols*]) =>
+    ModifyCol([ColumnNumber, Options, ColumnTitle]) =>
+    SetImageList(ImageListID [, IconType]) =>
+}
+
+class StatusBar extends GuiControl {
+    SetIcon(Filename, IconNumber := 1, PartNumber := 1) =>
+    SetParts(Widths*) =>
+    SetText(NewText, PartNumber := 1, Style := 0) =>
+}
+
+class Tab extends GuiList {
+    UseTab(Value := 0, ExactMatch := false) =>
+}
+
+
+class TreeView extends GuiControl {
+    Add(Name [, ParentItemID, Options]) =>
+    Delete([ItemID]) =>
+    Get(ItemID, Attribute) =>
+    GetChild(ParentItemID) =>
+    GetCount() =>
+    GetNext([ItemID, ItemType]) =>
+    GetParent(ItemID) =>
+    GetPrev(ItemID) =>
+    GetSelection() =>
+    GetText(ItemID) =>
+    Modify(ItemID [, Options, NewName]) =>
+    SetImageList(ImageListID [, IconType]) =>
+}
+
+
+class InputHook extends Object {
+	__New(Options := '', EndKeys := '', MatchList := '') =>
+	KeyOpt(Keys, KeyOptions) =>
+	Start() =>
+	Stop() =>
+	Wait([MaxTime]) =>
+}
+
+class Integer extends Number {
+	static Call(Value) =>
+}
+
+class Map extends Object {
+	__New([Key1, Value1, * ]) =>
+	__Enum(NumberOfVars?) =>
+	__Item[Index] =>
+	Clear() =>
+	Clone() =>
+	Delete(Key) =>
+	Get(Key [, Default]) =>
+	Has(Key) =>
+	Set(Key1, Value1, * ) =>
+}
+
+class Menu extends Object {
+	__New() =>
+	Add([MenuItemName, Callback_or_Submenu, Options]) =>
+	Check(MenuItemName) =>
+	Delete([MenuItemName]) =>
+	Disable(MenuItemName) =>
+	Enable(MenuItemName) =>
+	Insert([ItemToInsertBefore, NewItemName, Callback_or_Submenu, Options]) =>
+	Rename(MenuItemName [, NewName]) =>
+	SetColor([ColorValue, Submenus := true]) =>
+	SetIcon(MenuItemName, FileName [, IconNumber, IconWidth]) =>
+	Show([X, Y, Wait]) =>
+	ToggleCheck(MenuItemName) =>
+	ToggleEnable(MenuItemName) =>
+	Uncheck(MenuItemName) =>
+	AddStandard() =>
+}
+
+class Number extends Primitive {
+	static Call(Value) =>
+}
+
+class Object extends Any {
+	static Call() =>
+	Clone() =>
+	DefineProp(Name, Desc) =>
+	DeleteProp(Name) =>
+	GetOwnPropDesc(Name) =>
+	HasOwnProp(Name) =>
+	OwnProps() =>
+}
+
+class OSError extends Error {
+	__New(code := A_LastError, What?, Extra?) =>
+}
+
+class RegExMatchInfo extends Object {
+	Pos([N]) =>
+	Len([N]) =>
+	Name(N) =>
+}
+
+class String extends Primitive {
+	static Call(Value) =>
+}
