@@ -1,0 +1,1 @@
+﻿doc := ComObject('MSXML2.DOMDocument')

@@ -1,0 +1,8 @@
+﻿select_files := FileSelect('M', A_WorkingDir, 'Selecione o arquivos', 'Todos os arquivos (*.*)')
+if not select_files.Length
+    ExitApp()
+    
+for filename in select_files
+{
+
+}
