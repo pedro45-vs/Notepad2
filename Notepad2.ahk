@@ -6,32 +6,31 @@
 #Include ..\Lib\StringLib.ahk
 #include ..\Lib\Valida.ahk
 
-#include ..\Lib\Debug.ahk
-
 TraySetIcon(EnvGet('LocalAppData') '\Notepad2\Notepad2.exe')
+A_TrayMenu.Default := '&Edit Script'
+
+; Carrega os Calltips globais
 CallTips := Map(), CallTips.CaseSense := 'Off'
-SciObjs := Map()
+CalltipParser(FileRead('src\autoHotkey.api', 'UTF-8'))
 
 ; Monitora a janela do Notepad2 para carregar a lib Scintilla
 ; Para iniciar a classe é preciso passar o hwnd do controle
 SetTimer(MonitorHwndScintilla, 250)
 MonitorHwndScintilla()
 {
-    np2_hwnd := WinExist('ahk_exe Notepad2.exe ahk_class Notepad2')
-    if not SciObjs.has(np2_hwnd)
+    global sci
+    static prev_hwnd := 0
+    if prev_hwnd = (np2_hwnd := WinActive('ahk_exe Notepad2.exe ahk_class Notepad2'))
+        return
+    else
     {
-        try
-        {
-            hSci := ControlGetHwnd('Scintilla1', np2_hwnd)
-            sci := Scintilla(hSci)
-            sci.CallTipSetPosition(1)
-            SciObjs[np2_hwnd] := sci
-            global sci := SciObjs[np2_hwnd]
-        }
+        prev_hwnd := np2_hwnd
+        WinActive(np2_hwnd) || Exit() 
+        sci := Scintilla(ControlGetHwnd('Scintilla1', np2_hwnd))
+        sci.CallTipSetPosition(1), sci.CallTipSetForeHlt(0xFF0000)
     }
 }
-; Carrega os Calltips globais
-CalltipParser(FileRead('src\autoHotkey.api', 'UTF-8'))
+
 
 ; Cria sub-menu com os scriptlets contidos na pasta
 submenu := Menu()
@@ -51,69 +50,6 @@ mcontext.Add('&Executar código selecionado', (*)=> ExecutarSelecao())
 mcontext.Add()
 mcontext.Add('&Scriplets', submenu)
 
-
-
-/*
-MonitorHwndScintilla()
-{
-    global sci
-    static prev_hwnd := 0
-    if prev_hwnd = (np2_hwnd := WinActive('ahk_exe Notepad2.exe ahk_class Notepad2'))
-        return
-    else
-        prev_hwnd := WinActive('A')
-
-    if np2_hwnd := WinActive('ahk_exe Notepad2.exe ahk_class Notepad2')
-    {
-        title := WinGetTitle('A')
-        hSci := ControlGetHwnd('Scintilla1', title)
-        try
-        {
-            sci := Scintilla(hSci)
-            sci.CallTipSetPosition(1)
-            sci.CallTipSetForeHlt(0xFF0000)
-        }
-        if RegExMatch(title ?? '', 'i)\.ahk \[(?<dir>(.+))\]', &re)
-            CarregarCalltips(re.dir)
-    }
-}
-
- ; Carrega as funções incluídas pela diretiva #Include
- ; Além das funções definidas no próprio script
-CarregarCalltips(currdir)
-{
-    global CallTips := Map()
-    CallTips.CaseSense := false
-
-    CalltipParser(retrieve_text := sci.GetText())
-
-    loop parse retrieve_text, '`n', '`r'
-    {
-        ; #Include <lib>
-        if RegExMatch(A_LoopField, 'i)#Include +\<(?<lib>.+)\>', &re)
-        {
-            try CalltipParser(FileRead(currdir '\Lib\' re.lib '.ahk', 'UTF-8'))
-        }
-        ; #Include FileFullPath.ahk
-        else if RegExMatch(A_LoopField, 'i)#Include +(?<path>([A-Z]:\\|\\\\).+\.ahk)', &re)
-        {
-            try CalltipParser(FileRead(re.path, 'UTF-8'))
-        }
-        ; #Include RelativePath.ahk
-        else if RegExMatch(A_LoopField, 'i)#Include +(?<path>[.\w][^:].+\.ahk)', &re)
-        {
-            try CalltipParser(FileRead(currdir '\' re.path, 'UTF-8'))
-        }
-        else
-            continue
-    }
-    for def, arr in CallTips
-        if arr.Length > 1
-            for item in arr
-                arr[A_index] := '+ ' item
-
-}
-*/
 ; Analisa a string em busca de definições de classes e funções
 CalltipParser(str)
 {
