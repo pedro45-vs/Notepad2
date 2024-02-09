@@ -1,0 +1,2 @@
+﻿if not select_file := FileSelect(3, A_WorkingDir, 'Selecione o arquivo', 'Todos os arquivos (*.*)')
+    ExitApp()

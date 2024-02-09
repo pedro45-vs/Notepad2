@@ -1,0 +1,3 @@
+﻿select_folder := FileSelect('D', A_WorkingDir, 'Selecione a pasta para prosseguir')
+if not select_folder
+    ExitApp()
