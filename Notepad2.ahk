@@ -5,6 +5,11 @@
 #Include ..\Lib\Numlib.ahk
 #Include ..\Lib\StringLib.ahk
 #include ..\Lib\Valida.ahk
+#include ..\Lib\RichEdit.ahk
+#include ..\Lib\cJSON.ahk
+
+MapDoc := Map(), MapDoc.CaseSense := 0
+MapDoc := JSON.Load(FileRead('DocAutohotkey.json', 'UTF-8'))
 
 TraySetIcon(EnvGet('LocalAppData') '\Notepad2\Notepad2.exe')
 A_TrayMenu.Default := '&Edit Script'
@@ -43,6 +48,7 @@ mcontext := Menu()
 mcontext.Add('&Remover aspas e parênteses', (*) => RemoveAspPar())
 mcontext.Add('&Limpar espaços à direita', (*) => MenuSelect('ahk_exe Notepad2.exe', , '2&', '15&', '8&'))
 mcontext.Add('&Abrir pasta do arquivo', (*) => MenuSelect('ahk_exe Notepad2.exe', , '1&', '19&'))
+mcontext.Add('Formatar CSV', FormatarCSV)
 mcontext.Add()
 mcontext.Add('&MsgBox Creator', MsgBoxCreator)
 mcontext.Add('&Formatar CNPJ', (*) => formatarCNPJ())
@@ -153,6 +159,53 @@ ShowCalltip()
     sci.CallTipSetHlt(start, end)
 }
 
+; Mostra o calltip para a palavra presente no map CallTips
+CalltipComplete()
+{
+    static opt := 0
+    sci.CallTipActive() || (opt := 0)
+    col := sci.GetColumn(pos := sci.GetCurrentPos()) +1
+    line := sci.GetCurLine()
+
+    ; Remove os parênteses e vírgulas dentro de strings literais
+    ; para não interferir com o regex de subfunções
+    if RegExMatch(line, '[\x22\x27][^\x22\x27]+[\x22\x27]', &re)
+    {
+        sanitizar := RegExReplace(re[0], '[(),]', ' ')
+        line := StrReplace(line, re[0], sanitizar)
+    }
+    word := '', param := 0
+    ; Busca as subfunções até que a posição do caret esteja entre o início e o fim
+    while pos_re := RegExMatch(line, '(\w+)\x28([^\x28\x29]*)\x29', &re)
+    {
+        if IsBetween(col, pos_re, pos_re + re.len -1)
+        {
+            word := StrLower(re[1])
+            subtext := SubStr(line, pos_re, col - pos_re)
+            StrReplace(subtext, ',' ,,, &commas)
+            break
+        }
+        else
+            line := StrReplace(line, re[0], Format('{:' re.len '}', ''))
+    }
+    CallTips.has(word) || Exit()
+    (++opt > CallTips[word].Length) && opt := 1
+
+    ; Divide os parâmentros da função e determina a posição inicial e final
+    ; para colorir o parâmetro corrrespondente
+    start := InStr(CallTips[word][opt], '(')
+    end   := InStr(CallTips[word][opt], ',')
+    loop commas
+    {
+        start := InStr(CallTips[word][opt], ',',,, A_Index)
+        end   := InStr(CallTips[word][opt], ',',,, A_Index + 1)
+    }
+    (end = 0) && end := InStr(CallTips[word][opt], ')') - 1
+
+    str := SubStr(CallTips[word][opt], start + 1)
+    sci.AddText(RegExReplace(str, '[\[\]()]') )
+}
+
 ; Remove parênteses e aspas da seleção
 RemoveAspPar()
 {
@@ -192,12 +245,97 @@ ExecutarSelecao()
     exec.StdIn.Close()
 }
 
+; Formata o texto como uma tabela ASCII, mas preservando o delimitador
+FormatarCSV(*)
+{
+    text := sci.GetText(), Width :=  Map()
+    Loop parse text, '`n', '`r'
+    {
+        ; Determina qual delimitador usar com base na quantidade que aparece
+        ; na primeira linha do texto, depois adiciona o comprimento de cada
+        ; campo no Map para determinar o tamanho mínimo de cada coluna.
+        if A_Index = 1
+        {
+            StrReplace(A_LoopField, ',' ,,, &commas)
+            StrReplace(A_LoopField, ';' ,,, &semicolons)
+            StrReplace(A_LoopField, '|' ,,, &pipes)
+            Delimiters := Map(commas, ',', semicolons, ';', pipes, '|')
+            Delimiter := Delimiters[Max(commas, semicolons, pipes)]
+            
+            for item in StrSplit(A_LoopField, Delimiter)
+                Width[A_Index] := [StrLen(item)]
+        }
+        else
+        {
+            for item in StrSplit(A_LoopField, Delimiter)
+                Width[A_Index].push(StrLen(item))            
+        }
+    }
+    ; Formata cada coluna com o comprimento mínimo necessário
+    ; e alinha à direita os campos numéricos.
+    Loop parse text, '`n', '`r'
+    {
+        newline := ''
+        for item in StrSplit(A_LoopField, Delimiter)
+        {
+            if item ~= '^[0-9.,]+$'
+                newline .= Format('{:' Max(Width[A_Index]*) '}', item) Delimiter
+            else
+                newline .= Format('{:-' Max(Width[A_Index]*) '}', item) Delimiter
+        }
+        new .= RTrim(newline, Delimiter) '`n'
+    }
+    sci.SetText(new)
+    MenuSelect('ahk_exe Notepad2.exe', , '4&', '10&')
+    if not WinWait('CSV Options',, 2)
+        return
+
+    Control := Map(',', 'Button2', ';', 'Button5', '|', 'Button4')
+    ControlClick(Control[Delimiter], 'CSV Options',,,, 'NA')
+    ControlClick('Button14', 'CSV Options',,,, 'NA')
+}
+
+GuiP := Gui('-MaximizeBox -MinimizeBox AlwaysOnTop', 'Docs')
+GuiP.OnEvent('Close', (*)=> GuiP.Hide())
+GuiP.MarginX := GuiP.MarginY := 0
+GuiP.SetFont('s12', 'Segoe UI')
+Rich := RichEdit(GuiP, 'VScroll w600 h400')
+Rich.SetMargins(20, 20)
+
+Help()
+{
+    word := sci.GetSelText()
+    if not MapDoc.has(word)
+        return
+    
+    Rich.Clear()
+    cab := Rich.Text(word)
+    cab.bold := -1, cab.Size := 18, cab.ForeColor := Rich.Color['#FF00FF']
+    Rich.Space(10)
+    cab := Rich.Text(MapDoc[word]['desc'])
+    cab.italic := -1
+    Rich.Space(10)
+
+    for param in MapDoc[word]['params']
+    {
+        cab := Rich.Text(param[1]['nome'])
+        cab.bold := -1
+        Rich.Space(5)
+        cab := Rich.Text(param[1]['desc'])
+        Rich.Space(10)
+    }
+    GuiP.Show()
+}
+
 #HotIf WinActive('ahk_exe Notepad2.exe')
 
 F1::ShowCalltip()
+F2::CalltipComplete()
 F5::MenuSelect('ahk_exe Notepad2.exe', , '6&', '9&')
 F11::AbrirAjuda()
 !r::RemoveAspPar()
+
++F1::Help()
 
 ; Calcula a seleção como expressão e adiciona o resultado
 ^!c::

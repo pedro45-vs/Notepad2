@@ -19,6 +19,10 @@ class Scintilla
     GetSelText() => this.__ReadBuffer(2161)
     ;Replace the selected text with the argument text.
     ReplaceSel(str) => this.__Message(2170, 0, this.__WriteBuffer(str).ptr)
+    ; Clear the selection.
+    Clear() => this.__Message(2180)
+    ; Replace the contents of the document with the argument text.
+    SetText(str) => this.__Message(2181, 0, this.__WriteBuffer(str).ptr)    
     ; Retrieve all the text in the document.
     GetText() => this.__ReadBuffer(2182)
     ; Retrieve the column number of a position, taking tab width into account.
