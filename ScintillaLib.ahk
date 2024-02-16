@@ -103,7 +103,6 @@ class TextRetrieval extends BaseScintilla
     ; Returns the position of the opposite end of the selection to the caret.
     GetAnchor() => this.__Message(2009)
 
-GetAnchor=2009(,)
     ; Retrieve the word at position
     CurrentWord(pos)
     {
@@ -251,6 +250,45 @@ class Indicators extends Calltips
 class Scintilla extends Indicators
 {
 
+}
+
+class Selection
+{
+    ; Sets the position of the caret.
+    SetCurrentPos(pos) => this.__Message(2141, pos)
+    ; Set caret to a position, while removing any existing selection.
+    SetEmptySelection(pos) => this.__Message(2556, pos)
+    ; Select a range of text.
+    SetSel(pos_anchor, pos_caret) => this.__Message(2160, pos_anchor, pos_caret)
+    ; Ensure the caret is visible.
+    ScrollCaret() => this.__Message(2169)
+    
+}
+
+class Searching
+{
+    ; Replace the target text with the argument text.
+    ; Text is counted so it can contain NULs.
+    ; Returns the length of the replacement text.
+    ReplaceTarget(str) => this.__Message(2194, StrLen(str), this.__WriteBuffer(str).ptr)
+    ; Search for a counted string in the target and set the target to the found
+    ; range. Text is counted so it can contain NULs.
+    ; Returns start of found range or -1 for failure in which case target is not moved.
+    SearchInTarget(str) => this.__Message(2197, StrLen(str), this.__WriteBuffer(str).ptr)
+    ; Set the search flags used by SearchInTarget.
+    SetSearchFlags(searchFlags) => this.__Message(2198, searchFlags)
+    ; Retrieve the text in the target.
+    GetTargetText() => this.__ReadBuffer(2687)
+    ; Sets the target to the whole document.
+    TargetWholeDocument() => this.__Message(2690)
+    ; Sets both the start and end of the target in one call.
+    SetTargetRange(start, end) => this.__Message(2686, start, end)    
+}
+
+class Scrolling
+{
+    ; Ensure the caret is visible.
+    ScrollCaret() => this.__Message(2169)
 }
 
 

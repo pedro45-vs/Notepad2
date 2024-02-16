@@ -1,4 +1,11 @@
-﻿#Requires AutoHotkey v2.1-
+﻿/************************************************************************
+ * @description Class Scintilla com as funções básicas mais utilizadas
+ * @author Pedro Henrique C. Xavier
+ * @date 2024-02-16
+ * @version 2.1-alpha.8
+ ***********************************************************************/
+
+#Requires AutoHotkey v2.1-
 
 class Scintilla
 {
@@ -7,14 +14,14 @@ class Scintilla
         this.hSci := hSci
         this.PID := WinGetPID(hSci)
     }
-    ; Insert string at a position.
+    ; Add text to the document at current position.
     AddText(str) => this.__Message(2001, StrLen(str), this.__WriteBuffer(str).ptr)
     ; Insert string at a position.
     InsertText(pos, str) => this.__Message(2003, pos, this.__WriteBuffer(str).ptr)
+    ; Append a string to the end of the document without changing the selection.
+    AppendText(str) => this.__Message(2282, StrLen(str), this.__WriteBuffer(str).ptr)
     ; Returns the position of the caret.
     GetCurrentPos() => this.__Message(2008)
-    ; Returns the position of the opposite end of the selection to the caret.
-    GetAnchor() => this.__Message(2009)
     ; Retrieve the selected text.
     GetSelText() => this.__ReadBuffer(2161)
     ;Replace the selected text with the argument text.
@@ -22,7 +29,7 @@ class Scintilla
     ; Clear the selection.
     Clear() => this.__Message(2180)
     ; Replace the contents of the document with the argument text.
-    SetText(str) => this.__Message(2181, 0, this.__WriteBuffer(str).ptr)    
+    SetText(str) => this.__Message(2181, 0, this.__WriteBuffer(str).Ptr)
     ; Retrieve all the text in the document.
     GetText() => this.__ReadBuffer(2182)
     ; Retrieve the column number of a position, taking tab width into account.
@@ -41,25 +48,36 @@ class Scintilla
     CallTipSetForeHlt(colour) => this.__Message(2207, colour)
     ; Set position of calltip, above or below text.
     CallTipSetPosition(bool) => this.__Message(2213, bool)
+    ; Set caret to a position, while removing any existing selection.
+    SetEmptySelection(pos) => this.__Message(2556, pos)
+    ; Ensure the caret is visible.
+    ScrollCaret() => this.__Message(2169)
+    ; Replace the target text with the argument text.
+    ; Text is counted so it can contain NULs.
+    ; Returns the length of the replacement text.
+    ReplaceTarget(str) => this.__Message(2194, StrLen(str), this.__WriteBuffer(str).ptr)
+    ; Search for a counted string in the target and set the target to the found
+    ; range. Text is counted so it can contain NULs.
+    ; Returns start of found range or -1 for failure in which case target is not moved.
+    SearchInTarget(str) => this.__Message(2197, StrLen(str), this.__WriteBuffer(str).ptr)
+    ; Set the search flags used by SearchInTarget.
+    SetSearchFlags(searchFlags) => this.__Message(2198, searchFlags)
+    ; Retrieve the text in the target.
+    GetTargetText() => this.__ReadBuffer(2687)
+    ; Sets the target to the whole document.
+    TargetWholeDocument() => this.__Message(2690)
+    ; Sets both the start and end of the target in one call.
+    SetTargetRange(start, end) => this.__Message(2686, start, end)    
     ; Retrieve the word at position
     CurrentWord(pos)
     {
         start := this.__Message(2266, pos, 1)
         end := this.__Message(2267, pos, 1)
-        return (end > start) && this.GetTextRangeFull(start, end)
-    }
-    ; Retrieve a range of text that can be past 2GB.
-    GetTextRangeFull(start, end)
-    {
-        textSize := end - start
-        size := A_PtrSize * 3
-        RB := RemoteBuffer(this.PID, size + textSize + 1)
-        RB.Write(TEXTRANGE(start, end, RB.ptr + size))
-
-        textSize := this.__Message(2039, , RB.ptr) + 1
-        textBuf := Buffer(textSize, 0)
-        RB.Read(textBuf, size)
-        return StrGet(textBuf, 'UTF-8')
+        if (end > start)
+        {
+            this.SetTargetRange(start, end)
+            return this.GetTargetText()
+        }
     }
     ; Simplificação da função SendMessage()
     __Message(msg, wParam?, lParam?) => SendMessage(msg, wParam?, lParam?, this.hSci)
@@ -81,21 +99,6 @@ class Scintilla
         RB.Write(buf)
         return RB
     }
-}
-
-; Structure
-class TEXTRANGE
-{
-    start : iptr
-    end : iptr
-    ptrtext : iptr
-    __New(start, end, ptrtext)
-    {
-        this.start := start
-        this.end := end
-        this.ptrtext := ptrtext
-    }
-    size => ObjGetDataSize(this)
 }
 
 /**
