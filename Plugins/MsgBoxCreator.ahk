@@ -18,7 +18,7 @@
 #SingleInstance
 #Include ..\ScintillaLite.ahk
 
-TraySetIcon('Shell32.dll', 88)
+TraySetIcon(EnvGet('LocalAppData') '\Notepad2\Notepad2.exe')
 
 buttonConditions := [
 	["Ok", "Cancel"], ["Abort", "Retry", "Ignore"], ["Yes", "No", "Cancel"], ["Yes", "No"], ["Retry", "Cancel"], ["Cancel", "Try Again", "Continue"]
