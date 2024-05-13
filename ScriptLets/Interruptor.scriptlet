@@ -1,0 +1,13 @@
+F6::
+{
+    static toggle := 0
+    if toggle := !toggle
+        SetTimer(Interruptor, 250), Tooltip('Interrupor Ligado', 1, 1)
+    else
+        SetTimer(Interruptor, 0), ToolTip()
+}
+
+Interruptor()
+{
+
+}
